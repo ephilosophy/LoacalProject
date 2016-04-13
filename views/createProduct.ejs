@@ -1,0 +1,109 @@
+<% include layout %>
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title"><%=title %></h3>
+	</div>
+	<div class="panel-body">
+		<div class="container" ng-app = "productModule" ng-controller="productCreateController">
+
+			<%include message %>
+			<% include validationSummary %>
+			<form class="navbar-form navbar-left" role="search" method="POST" name="formProductCategory">
+				<div class="row">
+					<div class="form-group">
+						<label for="productName">Product Name</label><br>
+						<input type="text" class="form-control" 
+						placeholder="Enter Product Name"
+						name="productName"
+						id="productName"
+						ng-model="product.name"
+						style="width:100%"
+						required >
+					</div>
+				</div>
+				<div><br></div>
+				<div class="row">
+					<div class="form-group">
+						<label for="productCost">Product Cost</label><br>
+						<input type="text" class="form-control" 
+						placeholder="Enter Product Cost"
+						name="productCost"
+						id="productCost"
+						ng-model="product.productCost"
+						style="width:100%"
+						required >
+					</div>
+				</div>				
+				<div><br></div>
+				<div class="row">
+					<div class="form-group">
+						<label for="productCategory">Product Category</label>
+						<select
+							class="form-control"
+							name="productCategory"
+							id="productCategorySelect"
+							ng-model="product.productCategoryId"
+						>
+							<option value="">Please Select Product Category</option>
+							<option data-ng-repeat="productCategory in productCategories"
+								value={{productCategory.id}}>{{productCategory.categoryName}}
+							</option>
+						</select>
+					</div>
+				</div>
+				<div><br></div>
+				<div class="row">
+					<div class="form-group">
+						<label for="productSellingPrice">Product Selling Price</label><br>
+						<input type="text" class="form-control" 
+						placeholder="Enter Product Selling Price"
+						name="productSellingPrice"
+						id="productSellingPrice"						
+						ng-model="product.productPrice"
+						style="width:100%"
+						required >
+					</div>
+				</div>
+				<div><br></div>
+				<div class="row">
+					<div class="form-group">
+						<label for="productDetails">Product Details</label><br>
+						<textarea type="text" class="form-control" 
+						placeholder="Enter Product Details"
+						name="productDetails"
+						id="productDetails"
+						rows="5"
+						cols="30"						
+						ng-model="product.description"
+						style="width:100%"
+						required ></textarea>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group" style="padding-left:40%">
+						<button type="button" class="btn btn-primary"
+						ng-click="createProduct(product)">
+						Add Product 
+						</button>
+					</div>
+				</div>
+				
+			</form>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="/libs/angular/angular.js"></script>
+<script type="text/javascript" src="/libs/angular-route/angular-route.js"></script>
+
+<script type="text/javascript" src="/javascripts/app/productCategory/productCategoryModule.js"></script>
+<script type="text/javascript" src="/javascripts/app/product/productModule.js"></script>
+
+<script type="text/javascript" src="/javascripts/app/product/productCreateController.js"></script>
+
+<script type="text/javascript" src="/javascripts/app/productCategory/productCategoryService.js"></script>
+<script type="text/javascript" src="/javascripts/app/product/productService.js"></script>
+
+
+<script type="text/javascript" src="/javascripts/app/productCategory/requireFieldValidationService.js"></script>

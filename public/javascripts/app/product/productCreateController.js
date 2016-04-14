@@ -60,7 +60,7 @@ function productCreateController($scope, $timeout, requireFieldValidationService
 	}
 
 	$scope.createProduct = function(product){
-		console.log("Hello to gitHUB");
+		
 		var validationMessages = requireFieldValidationService.getRequiredFieldValidationErrorMessage(
 		[
 		{name:$scope.product.name || "", errorMessage:'Please enter product name'},
